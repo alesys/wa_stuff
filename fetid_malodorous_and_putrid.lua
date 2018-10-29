@@ -1,5 +1,5 @@
 
--- 2 triggers: 262313, 262314
+-- 2 triggers: 262313, 262314 -- action: OnShow
 
 local name = GetUnitName ( WeakAuras.CurrentUnit )
 local spell = 262313
@@ -11,7 +11,7 @@ elseif count >= 3 then
   SendChatMessage ("[".. count .." Stacks] ALV! Si no tienes inmunidad estas bien DED")
 end
 
---
+-- Actions: OnShow
 
 local name = GetUnitName ( WeakAuras.CurrentUnit )
 local spells = { 262313, 262314 }
@@ -23,4 +23,15 @@ for i, spell ipairs (spells) do
     elseif count >= 3 then
       SendChatMessage ("[".. count .." Stacks] ALV! Si no tienes inmunidad estas bien DED")
     end
+    if count >= 2 then
+      -- add fail count for the player
+    end
 end
+
+-- Display, %c
+
+function ()
+  return aura_env.output
+end
+
+-- 
