@@ -20,18 +20,9 @@ for i, spell ipairs (spells) do
     local _,_,count = WA_GetUnitDebuff ( WeakAuras.CurrentUnit, spell, "HARMFUL" )
     if count == 2 then
       SendChatMessage ("[2 Stacks!] Cabron, ponte algo y usa la Healthstone o HealingPot!", "WHISPER", nil, name)
+      SendChatMessage (name.." la cagó, trae " .. count .. " stacks!", "YELL")
     elseif count >= 3 then
       SendChatMessage ("[".. count .." Stacks] ALV! Si no tienes inmunidad estas bien DED")
-    end
-    if count >= 2 then
-      -- add fail count for the player
+      SendChatMessage (name.." está bien DED, trae " .. count .. " stacks!", "YELL")
     end
 end
-
--- Display, %c
-
-function ()
-  return aura_env.output
-end
-
--- 
