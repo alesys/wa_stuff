@@ -1,4 +1,6 @@
 -- output
+(
+
 function ()
     local output = ""
     output = aura_env.output
@@ -8,7 +10,11 @@ function ()
     return output
 end
 
+)()
 --
+(
+
+
 function (displays, mainevent, _, subEvent, _, sourceGUID, sourceName, _, _, destGUID, destName, _, _, spellID)
     --aura_env.output = mainevent .. " " .. sourceName .. "\n" .. destName
     --SendChatMessage(mainevent)
@@ -38,3 +44,10 @@ function (displays, mainevent, _, subEvent, _, sourceGUID, sourceName, _, _, des
     end
     return true
 end
+
+
+
+)()
+
+
+
