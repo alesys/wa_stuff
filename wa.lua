@@ -6,6 +6,7 @@ SendChatMessage("Lunar Beacon! Andate a una esquina!", "WHISPER", nil, name)
 -- todo: Un WA para ver los weyes que tienen MoonBurn como barra de tiempo
 
 -- COMBAT_LOG_EVENT_UNFILTERED ENCOUNTER_START ENCOUNTER_END
+(
 function (displays, mainevent, _, subEvent, _, sourceGUID, sourceName, _, _, destGUID, _, _, _, spellID)
   local findSpellID = 23633
   local limit = 6
@@ -17,7 +18,7 @@ function (displays, mainevent, _, subEvent, _, sourceGUID, sourceName, _, _, des
     for i,purge_history_item in ipairs(purge_history) do
       if purge_history_item["count"] >= limit then
         SendChatMessage("--//".. purge_history_item["text"], "RAID")
-
+      end
     end
   end
   if mainevent == "COMBAT_LOG_EVENT_UNFILTERED" and subEvent:find("SPELL_CAST_SUCCESS") and destGUID == sourceGUID and spellID == findSpellID then
@@ -39,9 +40,10 @@ function (displays, mainevent, _, subEvent, _, sourceGUID, sourceName, _, _, des
       purge_history[index]["text"] = purge_history[index]["text"] .. output
   end
 end
+)
 
 -- COMBAT_LOG_EVENT_UNFILTERED, ENCOUNTER_START, ENCOUNTER_END
-
+     (
 function(displays, mainevent, _, subEvent, _, sourceGUID, sourceName, _, _, destGUID, _, _, _, spellID)
     if subEvent:find("SPELL_CAST_SUCCESS") and destGUID == sourceGUID and spellID == 236330 then
         local duration = 10 --in seconds. change to modify the duration of time before fade
@@ -81,6 +83,8 @@ function(displays, mainevent, _, subEvent, _, sourceGUID, sourceName, _, _, dest
     end
 end
 
+    )()
+    (
 function (displays, mainevent)
     print(mainevent)
     if mainevent == "PLAYER_ENTER_COMBAT" then
@@ -93,9 +97,9 @@ function (displays, mainevent)
         print(WeakAurasSaved['test_msg'])
     end
 end
+)()
 
-
-
+(
 -- 265370  Blood Geyser id
 function (displays, mainevent, _, subEvent, _, sourceGUID, sourceName, _, _, destGUID, _, _, _, spellID)
   local findSpellID = 265370
@@ -120,3 +124,6 @@ function (displays, mainevent, _, subEvent, _, sourceGUID, sourceName, _, _, des
     -- todo: print resume
   end 
 end
+
+
+)
